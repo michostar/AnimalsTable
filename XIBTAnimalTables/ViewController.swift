@@ -15,16 +15,20 @@ class ViewController: UITableViewController {
     
     
     
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.s
         getData {
             self.tableView.reloadData()
+            
         }
         tableView.register(UINib(nibName: "XIBNameCell", bundle: nil), forCellReuseIdentifier: "XIBNameCell")
+        tableView.register(UINib(nibName: "DescriptionCell", bundle: nil), forCellReuseIdentifier: "DescriptionCell")
         
     }
+    
+    
     
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -32,15 +36,23 @@ class ViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "XIBNameCell", for: indexPath) as! XIBNameCell
+        if animals[indexPath.row].cellNum == 1
+        {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "XIBNameCell", for: indexPath)as! XIBNameCell
         cell.lbl.text = animals[indexPath.row].name
-        return cell
+            return cell
+        }else
+        {
+            let cell = Bundle.main.loadNibNamed("DescriptionCell", owner: self, options: nil)?.first as! DescriptionCell
+            cell.descripeLbl.text = animals[indexPath.row].description
+            return cell
+        }
     }
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 150
+        return 100
     }
-
+    
     
     
     func getData( completed:@escaping () -> ()){
@@ -53,6 +65,6 @@ class ViewController: UITableViewController {
             }
         }
     }
-
+    
 }
 

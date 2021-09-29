@@ -10,6 +10,10 @@ import Foundation
 
 struct AnimalsName: Codable{
     
-    var name: String
-    var id: Int
+    var name: String?
+    var description: String?
+    var id: Int?
+    var cellNum: Int?
+    
+    
 }

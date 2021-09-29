@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E22169A52704862F0081E799 /* DescriptionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E22169A32704862F0081E799 /* DescriptionCell.swift */; };
+		E22169A62704862F0081E799 /* DescriptionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E22169A42704862F0081E799 /* DescriptionCell.xib */; };
 		E236BF7B27038A1B00DB6343 /* XIBNameCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E236BF7927038A1B00DB6343 /* XIBNameCell.swift */; };
 		E236BF7C27038A1B00DB6343 /* XIBNameCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E236BF7A27038A1B00DB6343 /* XIBNameCell.xib */; };
 		E2B34903270374800030C1C2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2B34902270374800030C1C2 /* AppDelegate.swift */; };
@@ -21,6 +23,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		E22169A32704862F0081E799 /* DescriptionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DescriptionCell.swift; sourceTree = "<group>"; };
+		E22169A42704862F0081E799 /* DescriptionCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DescriptionCell.xib; sourceTree = "<group>"; };
 		E236BF7927038A1B00DB6343 /* XIBNameCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XIBNameCell.swift; sourceTree = "<group>"; };
 		E236BF7A27038A1B00DB6343 /* XIBNameCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = XIBNameCell.xib; sourceTree = "<group>"; };
 		E2B348FF270374800030C1C2 /* XIBTAnimalTables.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = XIBTAnimalTables.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -70,6 +74,8 @@
 				E2B34904270374800030C1C2 /* SceneDelegate.swift */,
 				E2B34906270374800030C1C2 /* ViewController.swift */,
 				E236BF7927038A1B00DB6343 /* XIBNameCell.swift */,
+				E22169A32704862F0081E799 /* DescriptionCell.swift */,
+				E22169A42704862F0081E799 /* DescriptionCell.xib */,
 				E236BF7A27038A1B00DB6343 /* XIBNameCell.xib */,
 				E2B3491B270376B50030C1C2 /* AnimalsName.swift */,
 				E2B34908270374800030C1C2 /* Main.storyboard */,
@@ -144,6 +150,7 @@
 				E2B3490F270374820030C1C2 /* Assets.xcassets in Resources */,
 				E2B3490A270374800030C1C2 /* Main.storyboard in Resources */,
 				E2B3491A270375270030C1C2 /* Data.json in Resources */,
+				E22169A62704862F0081E799 /* DescriptionCell.xib in Resources */,
 				E236BF7C27038A1B00DB6343 /* XIBNameCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -156,6 +163,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E236BF7B27038A1B00DB6343 /* XIBNameCell.swift in Sources */,
+				E22169A52704862F0081E799 /* DescriptionCell.swift in Sources */,
 				E2B34907270374800030C1C2 /* ViewController.swift in Sources */,
 				E2B3490D270374800030C1C2 /* XIBTAnimalTables.xcdatamodeld in Sources */,
 				E2B34903270374800030C1C2 /* AppDelegate.swift in Sources */,
