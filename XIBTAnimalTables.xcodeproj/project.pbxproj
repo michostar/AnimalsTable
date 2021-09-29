@@ -51,6 +51,35 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		E22169AC27049BFA0081E799 /* DataModel */ = {
+			isa = PBXGroup;
+			children = (
+				E2B3491B270376B50030C1C2 /* AnimalsName.swift */,
+				E2B34919270375270030C1C2 /* Data.json */,
+			);
+			path = DataModel;
+			sourceTree = "<group>";
+		};
+		E22169AD27049C0E0081E799 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				E22169A42704862F0081E799 /* DescriptionCell.xib */,
+				E236BF7A27038A1B00DB6343 /* XIBNameCell.xib */,
+				E2B34908270374800030C1C2 /* Main.storyboard */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		E22169AE27049C1B0081E799 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				E2B34906270374800030C1C2 /* ViewController.swift */,
+				E236BF7927038A1B00DB6343 /* XIBNameCell.swift */,
+				E22169A32704862F0081E799 /* DescriptionCell.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
 		E2B348F6270374800030C1C2 = {
 			isa = PBXGroup;
 			children = (
@@ -72,18 +101,13 @@
 			children = (
 				E2B34902270374800030C1C2 /* AppDelegate.swift */,
 				E2B34904270374800030C1C2 /* SceneDelegate.swift */,
-				E2B34906270374800030C1C2 /* ViewController.swift */,
-				E236BF7927038A1B00DB6343 /* XIBNameCell.swift */,
-				E22169A32704862F0081E799 /* DescriptionCell.swift */,
-				E22169A42704862F0081E799 /* DescriptionCell.xib */,
-				E236BF7A27038A1B00DB6343 /* XIBNameCell.xib */,
-				E2B3491B270376B50030C1C2 /* AnimalsName.swift */,
-				E2B34908270374800030C1C2 /* Main.storyboard */,
+				E22169AE27049C1B0081E799 /* Controller */,
+				E22169AD27049C0E0081E799 /* Views */,
+				E22169AC27049BFA0081E799 /* DataModel */,
 				E2B3490E270374820030C1C2 /* Assets.xcassets */,
 				E2B34910270374820030C1C2 /* LaunchScreen.storyboard */,
 				E2B34913270374820030C1C2 /* Info.plist */,
 				E2B3490B270374800030C1C2 /* XIBTAnimalTables.xcdatamodeld */,
-				E2B34919270375270030C1C2 /* Data.json */,
 			);
 			path = XIBTAnimalTables;
 			sourceTree = "<group>";
