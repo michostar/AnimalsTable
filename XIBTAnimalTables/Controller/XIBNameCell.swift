@@ -7,9 +7,16 @@
 
 import UIKit
 
+
+protocol ReloadTableDelegate{
+   func reloadTable()
+    
+}
+
 class XIBNameCell: UITableViewCell {
 
-   
+    var delegateReload: ReloadTableDelegate!
+    
     var texts = ""
     @IBOutlet weak var lbl: UILabel!
     
@@ -20,9 +27,12 @@ class XIBNameCell: UITableViewCell {
     @IBAction func groupBtn(_ sender: UIButton) {
         labelName()
         print("Group of \(texts) is pressed")
+        delegateReload.reloadTable()
+        
     }
     @IBAction func soloBtn(_ sender: UIButton) {
         labelName()
         print("Solo of \(texts) is pressed")
+        delegateReload.reloadTable()
     }
 }

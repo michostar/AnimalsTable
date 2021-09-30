@@ -21,7 +21,6 @@ class ViewController: UITableViewController {
         // Do any additional setup after loading the view.s
         getData {
             self.tableView.reloadData()
-            
         }
         tableView.register(UINib(nibName: "XIBNameCell", bundle: nil), forCellReuseIdentifier: "XIBNameCell")
         tableView.register(UINib(nibName: "DescriptionCell", bundle: nil), forCellReuseIdentifier: "DescriptionCell")
@@ -40,6 +39,7 @@ class ViewController: UITableViewController {
         {
             let cell = tableView.dequeueReusableCell(withIdentifier: "XIBNameCell", for: indexPath)as! XIBNameCell
         cell.lbl.text = animals[indexPath.row].name
+            cell.delegateReload = self
             return cell
         }else
         {
@@ -66,5 +66,11 @@ class ViewController: UITableViewController {
         }
     }
     
+}
+
+extension ViewController: ReloadTableDelegate{
+    func reloadTable() {
+        print("Reloading....")
+    }
 }
 
