@@ -8,7 +8,7 @@
 import UIKit
 
 class ViewController: UITableViewController, ChangeCells{
-   
+    
     
     
     func cellIsUp(cell: Int) {
@@ -75,17 +75,17 @@ class ViewController: UITableViewController, ChangeCells{
         animals.remove(at: sourceIndexPath.row)
         animals.insert(move, at: destinationIndexPath.row)
     }
-    
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        tableView.deselectRow(at: indexPath, animated: true)
-        if animals[indexPath.row].cellNum == 1{
-            animals[indexPath.row].cellNum = 2
-            tableView.reloadRows(at: [indexPath], with: .fade)
-        }else{
-            animals[indexPath.row].cellNum = 1
-            tableView.reloadRows(at: [indexPath], with: .right)
-        }
-    }
+//
+//    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+//        tableView.deselectRow(at: indexPath, animated: true)
+//        if animals[indexPath.row].cellNum == 1{
+//            animals[indexPath.row].cellNum = 2
+//            tableView.reloadRows(at: [indexPath], with: .fade)
+//        }else{
+//            animals[indexPath.row].cellNum = 1
+//            tableView.reloadRows(at: [indexPath], with: .right)
+//        }
+//    }
     
     // get data from JSON
     func getData( completed:@escaping () -> ()){
