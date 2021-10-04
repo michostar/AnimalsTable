@@ -8,14 +8,15 @@
 import UIKit
 
 
-protocol ReloadTableDelegate{
-   func reloadTable()
+protocol ChangeCells: AnyObject{
+    func cellIsUp(cell: Int)
+    func cellIsDown()
     
 }
 
 class XIBNameCell: UITableViewCell {
 
-    var delegateReload: ReloadTableDelegate!
+    var delgateChangeCells: ChangeCells!
     
     var texts = ""
     @IBOutlet weak var lbl: UILabel!
@@ -24,15 +25,17 @@ class XIBNameCell: UITableViewCell {
         texts = lbl.text!
     }
     
+    
     @IBAction func groupBtn(_ sender: UIButton) {
         labelName()
         print("Group of \(texts) is pressed")
-        delegateReload.reloadTable()
+        delgateChangeCells.cellIsUp(cell: 2)
+        
         
     }
     @IBAction func soloBtn(_ sender: UIButton) {
         labelName()
         print("Solo of \(texts) is pressed")
-        delegateReload.reloadTable()
+        delgateChangeCells.cellIsDown()
     }
 }

@@ -7,14 +7,21 @@
 
 import UIKit
 
-class ViewController: UITableViewController {
+class ViewController: UITableViewController, ChangeCells{
+   
     
+    
+    func cellIsUp(cell: Int) {
+        print("UP")
+    }
+    
+    func cellIsDown() {
+        print("Down")
+        
+    }
     
     
     var animals:[AnimalsName] = []
-    
-    
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,12 +30,12 @@ class ViewController: UITableViewController {
             self.tableView.reloadData()
         }
         tableView.register(UINib(nibName: "XIBNameCell", bundle: nil), forCellReuseIdentifier: "XIBNameCell")
+        
         tableView.register(UINib(nibName: "DescriptionCell", bundle: nil), forCellReuseIdentifier: "DescriptionCell")
         
+        tableView.isEditing = true
+        
     }
-    
-    
-    
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return animals.count
@@ -38,11 +45,11 @@ class ViewController: UITableViewController {
         if animals[indexPath.row].cellNum == 1
         {
             let cell = tableView.dequeueReusableCell(withIdentifier: "XIBNameCell", for: indexPath)as! XIBNameCell
-        cell.lbl.text = animals[indexPath.row].name
-            cell.delegateReload = self
+            cell.lbl.text = animals[indexPath.row].name
+            cell.delgateChangeCells = self
             return cell
-        }else
-        {
+            
+        }else{
             let cell = Bundle.main.loadNibNamed("DescriptionCell", owner: self, options: nil)?.first as! DescriptionCell
             cell.descripeLbl.text = animals[indexPath.row].description
             return cell
@@ -50,11 +57,37 @@ class ViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 100
+        if indexPath.row == 0{
+            return 80
+        }
+        return UITableView.automaticDimension
     }
     
+    override func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCell.EditingStyle {
+        return .none
+    }
     
+    override func tableView(_ tableView: UITableView, shouldIndentWhileEditingRowAt indexPath: IndexPath) -> Bool {
+        return false
+    }
+    override func tableView(_ tableView: UITableView, moveRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
+        let move = self.animals[sourceIndexPath.row]
+        animals.remove(at: sourceIndexPath.row)
+        animals.insert(move, at: destinationIndexPath.row)
+    }
     
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+        if animals[indexPath.row].cellNum == 1{
+            animals[indexPath.row].cellNum = 2
+            tableView.reloadRows(at: [indexPath], with: .fade)
+        }else{
+            animals[indexPath.row].cellNum = 1
+            tableView.reloadRows(at: [indexPath], with: .right)
+        }
+    }
+    
+    // get data from JSON
     func getData( completed:@escaping () -> ()){
         if let path = Bundle.main.path(forResource: "Data", ofType: "json"){
             do{
@@ -68,9 +101,5 @@ class ViewController: UITableViewController {
     
 }
 
-extension ViewController: ReloadTableDelegate{
-    func reloadTable() {
-        print("Reloading....")
-    }
-}
+
 

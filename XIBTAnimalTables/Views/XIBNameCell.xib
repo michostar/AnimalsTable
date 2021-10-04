@@ -10,31 +10,20 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="64" id="KGk-i7-Jjw" customClass="XIBNameCell" customModule="XIBTAnimalTables" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="392" height="64"/>
+            <rect key="frame" x="0.0" y="0.0" width="392" height="80"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="392" height="64"/>
+                <rect key="frame" x="0.0" y="0.0" width="392" height="80"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dsT-2H-nLW">
-                        <rect key="frame" x="17" y="12" width="146" height="41"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dsT-2H-nLW">
+                        <rect key="frame" x="20" y="24.5" width="146" height="31"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="m6E-qG-oBc">
-                        <rect key="frame" x="296" y="12" width="76" height="41"/>
-                        <constraints>
-                            <constraint firstAttribute="width" constant="76" id="uSm-W9-cUS"/>
-                        </constraints>
-                        <state key="normal" title="Button"/>
-                        <buttonConfiguration key="configuration" style="plain" title="Solo"/>
-                        <connections>
-                            <action selector="soloBtn:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="bzW-iV-COt"/>
-                        </connections>
-                    </button>
-                    <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tJW-SE-zc1">
-                        <rect key="frame" x="210" y="12" width="78" height="41"/>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tJW-SE-zc1">
+                        <rect key="frame" x="210" y="24.5" width="78" height="31"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="78" id="GNq-ee-v2Q"/>
                         </constraints>
@@ -44,6 +33,17 @@
                             <action selector="groupBtn:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="W6h-CX-NS4"/>
                         </connections>
                     </button>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="m6E-qG-oBc">
+                        <rect key="frame" x="296" y="24.5" width="76" height="31"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="76" id="uSm-W9-cUS"/>
+                        </constraints>
+                        <state key="normal" title="Button"/>
+                        <buttonConfiguration key="configuration" style="plain" title="Solo"/>
+                        <connections>
+                            <action selector="soloBtn:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="bzW-iV-COt"/>
+                        </connections>
+                    </button>
                 </subviews>
                 <constraints>
                     <constraint firstItem="dsT-2H-nLW" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="05e-Qn-Hhw"/>
@@ -51,8 +51,8 @@
                     <constraint firstItem="m6E-qG-oBc" firstAttribute="leading" secondItem="tJW-SE-zc1" secondAttribute="trailing" constant="8" symbolic="YES" id="HL8-3v-nIy"/>
                     <constraint firstItem="tJW-SE-zc1" firstAttribute="centerY" secondItem="dsT-2H-nLW" secondAttribute="centerY" id="PaB-Sr-G8e"/>
                     <constraint firstItem="m6E-qG-oBc" firstAttribute="centerY" secondItem="tJW-SE-zc1" secondAttribute="centerY" id="WrI-Y9-A3t"/>
-                    <constraint firstItem="tJW-SE-zc1" firstAttribute="leading" secondItem="dsT-2H-nLW" secondAttribute="trailing" constant="47" id="bKC-lK-c7P"/>
-                    <constraint firstItem="dsT-2H-nLW" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="17" id="gVu-3i-bNh"/>
+                    <constraint firstItem="tJW-SE-zc1" firstAttribute="leading" secondItem="dsT-2H-nLW" secondAttribute="trailing" constant="44" id="bKC-lK-c7P"/>
+                    <constraint firstItem="dsT-2H-nLW" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="gVu-3i-bNh"/>
                     <constraint firstItem="m6E-qG-oBc" firstAttribute="bottom" secondItem="tJW-SE-zc1" secondAttribute="bottom" id="rYW-oj-QIk"/>
                     <constraint firstAttribute="trailingMargin" secondItem="m6E-qG-oBc" secondAttribute="trailing" id="uw0-9c-dO2"/>
                     <constraint firstItem="m6E-qG-oBc" firstAttribute="top" secondItem="tJW-SE-zc1" secondAttribute="top" id="w4a-uc-Fy8"/>
