@@ -9,14 +9,16 @@ import UIKit
 
 
 protocol ChangeCells: AnyObject{
-    func cellIsUp(cell: Int)
+    func cellIsUp()
     func cellIsDown()
     
 }
 
 class XIBNameCell: UITableViewCell {
 
-    var delgateChangeCells: ChangeCells!
+   weak var delgateChangeCells: ChangeCells!
+    
+    
     
     var texts = ""
     @IBOutlet weak var lbl: UILabel!
@@ -29,7 +31,7 @@ class XIBNameCell: UITableViewCell {
     @IBAction func groupBtn(_ sender: UIButton) {
         labelName()
         print("Group of \(texts) is pressed")
-        delgateChangeCells.cellIsUp(cell: 2)
+        delgateChangeCells.cellIsUp()
         
         
     }
@@ -37,5 +39,6 @@ class XIBNameCell: UITableViewCell {
         labelName()
         print("Solo of \(texts) is pressed")
         delgateChangeCells.cellIsDown()
+      
     }
 }

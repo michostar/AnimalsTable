@@ -10,18 +10,25 @@ import UIKit
 class ViewController: UITableViewController, ChangeCells{
     
     
-    
-    func cellIsUp(cell: Int) {
-        print("UP")
+    func cellIsUp() {
+        var cells = AnimalsName()
+        cells.cellNum = 1
+        self.tableView.reloadData()
+        print(cells)
     }
     
     func cellIsDown() {
-        print("Down")
-        
+        var cellNumbers = AnimalsName()
+            cellNumbers.cellNum = 2
+        self.tableView.reloadData()
+        print(cellNumbers)
     }
     
-    
+    var indexPath: IndexPath?
     var animals:[AnimalsName] = []
+    
+    weak var delgateChangeCells: ChangeCells!
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,10 +37,9 @@ class ViewController: UITableViewController, ChangeCells{
             self.tableView.reloadData()
         }
         tableView.register(UINib(nibName: "XIBNameCell", bundle: nil), forCellReuseIdentifier: "XIBNameCell")
-        
         tableView.register(UINib(nibName: "DescriptionCell", bundle: nil), forCellReuseIdentifier: "DescriptionCell")
         
-        tableView.isEditing = true
+//        tableView.isEditing = true
         
     }
     
@@ -49,6 +55,13 @@ class ViewController: UITableViewController, ChangeCells{
             cell.delgateChangeCells = self
             return cell
             
+        }else if animals[indexPath.row].cellNum == 2
+        {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "DescriptionCell", for: indexPath)as! DescriptionCell
+            cell.descripeLbl.text = animals[indexPath.row].description
+            cell.delgateChangeCells = self
+            
+            return cell
         }else{
             let cell = Bundle.main.loadNibNamed("DescriptionCell", owner: self, options: nil)?.first as! DescriptionCell
             cell.descripeLbl.text = animals[indexPath.row].description
@@ -57,35 +70,36 @@ class ViewController: UITableViewController, ChangeCells{
     }
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        if indexPath.row == 0{
-            return 80
-        }
+       
         return UITableView.automaticDimension
     }
-    
-    override func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCell.EditingStyle {
-        return .none
-    }
-    
-    override func tableView(_ tableView: UITableView, shouldIndentWhileEditingRowAt indexPath: IndexPath) -> Bool {
-        return false
-    }
-    override func tableView(_ tableView: UITableView, moveRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
-        let move = self.animals[sourceIndexPath.row]
-        animals.remove(at: sourceIndexPath.row)
-        animals.insert(move, at: destinationIndexPath.row)
-    }
 //
-//    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//        tableView.deselectRow(at: indexPath, animated: true)
-//        if animals[indexPath.row].cellNum == 1{
-//            animals[indexPath.row].cellNum = 2
-//            tableView.reloadRows(at: [indexPath], with: .fade)
-//        }else{
-//            animals[indexPath.row].cellNum = 1
-//            tableView.reloadRows(at: [indexPath], with: .right)
-//        }
+//    override func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCell.EditingStyle {
+//        return .none
 //    }
+//
+//    override func tableView(_ tableView: UITableView, shouldIndentWhileEditingRowAt indexPath: IndexPath) -> Bool {
+//        return false
+//    }
+//    override func tableView(_ tableView: UITableView, moveRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
+//        let move = self.animals[sourceIndexPath.row]
+//        animals.remove(at: sourceIndexPath.row)
+//        animals.insert(move, at: destinationIndexPath.row)
+//    }
+
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+        if self.animals[indexPath.row].cellNum == 1
+        {
+            self.animals[indexPath.row].cellNum = 2
+            tableView.reloadRows(at: [indexPath], with: .fade)
+        }
+        else if self.animals[indexPath.row].cellNum == 2
+        {
+            self.animals[indexPath.row].cellNum = 1
+            tableView.reloadRows(at: [indexPath], with: .right)
+        }
+    }
     
     // get data from JSON
     func getData( completed:@escaping () -> ()){
