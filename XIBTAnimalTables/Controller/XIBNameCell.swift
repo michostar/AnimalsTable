@@ -8,15 +8,14 @@
 import UIKit
 
 
-protocol ChangeCells: AnyObject{
-    func cellIsUp()
-    func cellIsDown()
-    
+protocol XIBNameCellDelegate: AnyObject{
+    func cellIsUp(name: String?)
+    func cellIsDown(name: String?)
 }
 
 class XIBNameCell: UITableViewCell {
 
-   weak var delgateChangeCells: ChangeCells!
+   weak var delgateChangeCells: XIBNameCellDelegate!
     
     
     
@@ -31,14 +30,13 @@ class XIBNameCell: UITableViewCell {
     @IBAction func groupBtn(_ sender: UIButton) {
         labelName()
         print("Group of \(texts) is pressed")
-        delgateChangeCells.cellIsUp()
+        delgateChangeCells.cellIsUp(name: lbl.text)
         
         
     }
     @IBAction func soloBtn(_ sender: UIButton) {
         labelName()
         print("Solo of \(texts) is pressed")
-        delgateChangeCells.cellIsDown()
-      
+        delgateChangeCells.cellIsDown(name: lbl.text)
     }
 }

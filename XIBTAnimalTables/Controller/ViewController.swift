@@ -7,100 +7,80 @@
 
 import UIKit
 
-class ViewController: UITableViewController, ChangeCells{
+class ViewController: UITableViewController, XIBNameCellDelegate {
     
-    
-    func cellIsUp() {
-        var cells = AnimalsName()
-        cells.cellNum = 1
-        self.tableView.reloadData()
-        print(cells)
-    }
-    
-    func cellIsDown() {
-        var cellNumbers = AnimalsName()
-            cellNumbers.cellNum = 2
-        self.tableView.reloadData()
-        print(cellNumbers)
-    }
     
     var indexPath: IndexPath?
     var animals:[AnimalsName] = []
+    var descriptions: [Description] = []
+    var height: CGFloat = 50
     
-    weak var delgateChangeCells: ChangeCells!
     
+    func cellIsUp(name: String?) {
+        (height == 50) ? (height = 100) :(height = 50)
+        tableView.reloadData()
+        tableView.beginUpdates()
+
+        tableView.moveRow(at: IndexPath(row: 0, section: 0), to: IndexPath(row: 1, section: 0))
+        tableView.moveRow(at: IndexPath(row: 2, section: 0), to: IndexPath(row: 3, section: 0))
+        tableView.moveRow(at: IndexPath(row: 4, section: 0), to: IndexPath(row: 5, section: 0))
+        
+//        let row = indexPath?.row
+//        switch (row){
+//            case 0: tableView.moveRow(at: IndexPath(row: 0, section: 0) , to: IndexPath(row: 1, section: 0))
+//            case 2 :tableView.moveRow(at: IndexPath(row: 2, section: 0) , to: IndexPath(row: 3, section: 0))
+//            default:tableView.moveRow(at: IndexPath(row: 0, section: 0) , to: IndexPath(row: 1, section: 0))
+//        }
+        tableView.endUpdates()
+        
+        //        tableView.reloadData()
+        print("Up")
+    }
+    
+    func cellIsDown(name: String?) {
+        
+        print("Down")
+    }
+    
+    weak var delgateChangeCells: XIBNameCellDelegate!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.s
         getData {
             self.tableView.reloadData()
         }
         tableView.register(UINib(nibName: "XIBNameCell", bundle: nil), forCellReuseIdentifier: "XIBNameCell")
         tableView.register(UINib(nibName: "DescriptionCell", bundle: nil), forCellReuseIdentifier: "DescriptionCell")
-        
-//        tableView.isEditing = true
-        
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return animals.count
+        return section == 0 ? animals.count : descriptions.count
+        
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if animals[indexPath.row].cellNum == 1
-        {
+        
+        if indexPath.row % 2 == 0{
             let cell = tableView.dequeueReusableCell(withIdentifier: "XIBNameCell", for: indexPath)as! XIBNameCell
+            print("\(indexPath.row)   &&  \(indexPath.section) && \(indexPath.description)")
+            
             cell.lbl.text = animals[indexPath.row].name
             cell.delgateChangeCells = self
             return cell
-            
-        }else if animals[indexPath.row].cellNum == 2
-        {
+        }else if indexPath.row % 2 == 1 {
             let cell = tableView.dequeueReusableCell(withIdentifier: "DescriptionCell", for: indexPath)as! DescriptionCell
-            cell.descripeLbl.text = animals[indexPath.row].description
-            cell.delgateChangeCells = self
-            
+            cell.descripeLbl.text = descriptions[indexPath.row].description
             return cell
         }else{
-            let cell = Bundle.main.loadNibNamed("DescriptionCell", owner: self, options: nil)?.first as! DescriptionCell
-            cell.descripeLbl.text = animals[indexPath.row].description
+            let cell = tableView.dequeueReusableCell(withIdentifier: "DescriptionCell", for: indexPath)as! DescriptionCell
+            cell.descripeLbl.text = descriptions[indexPath.row].description
             return cell
         }
     }
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-       
-        return UITableView.automaticDimension
+        return 100
     }
-//
-//    override func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCell.EditingStyle {
-//        return .none
-//    }
-//
-//    override func tableView(_ tableView: UITableView, shouldIndentWhileEditingRowAt indexPath: IndexPath) -> Bool {
-//        return false
-//    }
-//    override func tableView(_ tableView: UITableView, moveRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
-//        let move = self.animals[sourceIndexPath.row]
-//        animals.remove(at: sourceIndexPath.row)
-//        animals.insert(move, at: destinationIndexPath.row)
-//    }
-
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        tableView.deselectRow(at: indexPath, animated: true)
-        if self.animals[indexPath.row].cellNum == 1
-        {
-            self.animals[indexPath.row].cellNum = 2
-            tableView.reloadRows(at: [indexPath], with: .fade)
-        }
-        else if self.animals[indexPath.row].cellNum == 2
-        {
-            self.animals[indexPath.row].cellNum = 1
-            tableView.reloadRows(at: [indexPath], with: .right)
-        }
-    }
-    
     // get data from JSON
     func getData( completed:@escaping () -> ()){
         if let path = Bundle.main.path(forResource: "Data", ofType: "json"){
@@ -111,6 +91,16 @@ class ViewController: UITableViewController, ChangeCells{
                 print(error.localizedDescription)
             }
         }
+        if let path = Bundle.main.path(forResource: "Description", ofType: "json"){
+            do{
+                let data = try Data(contentsOf: URL(fileURLWithPath: path), options: .mappedIfSafe)
+                descriptions = try JSONDecoder().decode([Description].self, from: data)
+            }catch let error{
+                print(error.localizedDescription)
+            }
+        }
+        
+        
     }
     
 }

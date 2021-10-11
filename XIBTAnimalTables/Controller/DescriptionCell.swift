@@ -9,7 +9,7 @@ import UIKit
 
 class DescriptionCell: UITableViewCell {
     
-    weak var delgateChangeCells: ChangeCells!
+    weak var delgateChangeCells: XIBNameCellDelegate!
     
 
     @IBOutlet weak var descripeLbl: UILabel!

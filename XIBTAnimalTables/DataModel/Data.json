@@ -1,94 +1,36 @@
 [
     {
         "name": "Bat",
-        "cellNum": 1,
-        "id": 100,
-        "change": 2
+        "id": 100
         
-    },{
-        "description": "description of Bats",
-        "cellNum": 2,
-        "change": 1
-    },{
+    },{},{
         "name": "Bear",
-        "cellNum": 1,
-        "id": 101,
-        "change": 2
-    },{
-        "description": "description of Bear",
-        "cellNum": 2,
-        "change": 1
-    },{
+        "id": 102
+        
+    },{},{
         "name": "Camel",
-        "cellNum": 1,
-        "id": 103,
-        "change": 2
-    },{
-        "description": "description of Camel",
-        "cellNum": 2,
-        "change": 1
-    },{
+        "id": 103
+    
+    },{},{
         "name": "Cow",
-        "cellNum": 1,
-        "id": 104,
-        "change": 2
-    },{
-        "description": "description of Cow",
-        "cellNum": 2,
-        "change": 1
-    },{
+        "id": 104
+    },{},{
         "name": "Goat",
-        "cellNum": 1,
-        "id": 105,
-        "change": 2
-    },{
-        "description": "description of Goat",
-        "cellNum": 2,
-        "change": 1
-    },{
+        "id": 105
+    },{},{
         "name": "Hamster",
-        "cellNum": 1,
-        "id": 106,
-        "change": 2
-    },{
-        "description": "description of Hamster",
-        "cellNum": 2,
-        "change": 1
-    },{
+        "id": 106
+    },{},{
         "name": "Horse",
-        "cellNum": 1,
-        "id": 107,
-        "change": 2
-    },{
-        "description": "description of Horse",
-        "cellNum": 2,
-        "change": 1
-    },{
+        "id": 107
+    },{},{
         "name": "Kangaroo",
-        "cellNum": 1,
-        "id": 108,
-        "change": 2
-    },{
-        "description": "description of Kangaroo",
-        "cellNum": 2,
-        "change": 1
-    },{
+        "id": 108
+    },{},{
         "name": "Lion",
-        "cellNum": 1,
-        "id": 109,
-        "change": 2
-    },{
-        "description": "description of Lion",
-        "cellNum": 2,
-        "change": 1
-    },{
+        "id": 109
+    },{},{
         "name": "Leopard",
-        "cellNum": 1,
-        "id": 110,
-        "change": 2
-    },{
-        "description": "description of Leopard",
-        "cellNum": 2,
-        "change": 1
-    }
+        "id": 110
+    },{}
 ]
