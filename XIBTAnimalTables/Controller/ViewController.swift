@@ -18,27 +18,13 @@ class ViewController: UITableViewController, XIBNameCellDelegate {
     
     func cellIsUp(name: String?) {
         (height == 50) ? (height = 100) :(height = 50)
-        tableView.reloadData()
-        tableView.beginUpdates()
-
+        
         tableView.moveRow(at: IndexPath(row: 0, section: 0), to: IndexPath(row: 1, section: 0))
-        tableView.moveRow(at: IndexPath(row: 2, section: 0), to: IndexPath(row: 3, section: 0))
-        tableView.moveRow(at: IndexPath(row: 4, section: 0), to: IndexPath(row: 5, section: 0))
-        
-//        let row = indexPath?.row
-//        switch (row){
-//            case 0: tableView.moveRow(at: IndexPath(row: 0, section: 0) , to: IndexPath(row: 1, section: 0))
-//            case 2 :tableView.moveRow(at: IndexPath(row: 2, section: 0) , to: IndexPath(row: 3, section: 0))
-//            default:tableView.moveRow(at: IndexPath(row: 0, section: 0) , to: IndexPath(row: 1, section: 0))
-//        }
-        tableView.endUpdates()
-        
-        //        tableView.reloadData()
         print("Up")
     }
     
     func cellIsDown(name: String?) {
-        
+        tableView.moveRow(at: IndexPath(row: 2, section: 0), to: IndexPath(row: 3, section: 0))
         print("Down")
     }
     
@@ -62,9 +48,7 @@ class ViewController: UITableViewController, XIBNameCellDelegate {
         
         if indexPath.row % 2 == 0{
             let cell = tableView.dequeueReusableCell(withIdentifier: "XIBNameCell", for: indexPath)as! XIBNameCell
-            print("\(indexPath.row)   &&  \(indexPath.section) && \(indexPath.description)")
-            
-            cell.lbl.text = animals[indexPath.row].name
+             cell.lbl.text = animals[indexPath.row].name
             cell.delgateChangeCells = self
             return cell
         }else if indexPath.row % 2 == 1 {
